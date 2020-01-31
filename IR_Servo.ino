@@ -14,8 +14,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int detect = digitalRead(8); // read obstacle status and store it 
-     into "detect"
+  int detect = digitalRead(8); // read obstacle status and store it into "detect"
   if(detect == LOW){ // object present
     for (pos = 0; pos <= 180; pos += 1) {
     myservo.write(pos);
