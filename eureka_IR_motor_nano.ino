@@ -11,24 +11,20 @@ void setup() {
 void loop() {
   int detect = digitalRead(8); // read obstacle status and store it into "detect"
   if(detect == LOW){ // object present
-    Serial.println("yo");
-    pos = 0;
-    myservo.write(180);
-    delay(1000);
-    myservo.write(70);
-//    for (pos = 0; pos <= 180; pos += 10) {
-//      Serial.println(pos);
-//      myservo.write(pos);
-//      delay(15);
-//    }
-//    for (pos = 180; pos >= 0; pos -= 10) {
-//      myservo.write(pos);
-//      delay(15);
-//    }
+   Serial.println("yo");
+   pos = 0;
+   for (pos = 0; pos <= 180; pos += 10) { //for loop that move the motor from 0 to 180
+     Serial.println(pos);
+     myservo.write(pos);
+     delay(15);
+   }
+   for (pos = 180; pos >= 0; pos -= 10) { //for loop that move the motor back to 0
+     myservo.write(pos);
+     delay(15);
+   }
   }
   else{
-   pos = 180;
-   Serial.println("All clear");  // do nothing
+    Serial.println("All clear");  // do nothing
   }
   delay(500); // wait 0.5 seconds
 }
